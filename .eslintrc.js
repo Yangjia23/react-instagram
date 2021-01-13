@@ -43,6 +43,8 @@ module.exports = {
     'import/prefer-default-export': OFF,
     'import/no-unresolved': ERROR,
 
+    'unicorn/better-regex': ERROR,
+    'unicorn/prevent-abbreviations': OFF,
     'unicorn/filename-case': [
       ERROR,
       {
@@ -54,7 +56,19 @@ module.exports = {
         },
       },
     ],
+    'unicorn/no-array-instanceof': WARN,
+    'unicorn/no-for-loop': WARN, // 使用 for of 和 .entries 代替传统的 for 循环
+    'unicorn/prefer-add-event-listener': [
+      ERROR,
+      {
+        excludedPackages: ['koa', 'sax'],
+      },
+    ],
+    'unicorn/prefer-query-selector': ERROR,
+    'unicorn/no-null': OFF,
 
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': [ERROR],
     '@typescript-eslint/no-useless-constructor': ERROR,
     '@typescript-eslint/no-empty-function': WARN,
     '@typescript-eslint/no-var-requires': OFF,
@@ -70,12 +84,27 @@ module.exports = {
     'react/state-in-constructor': OFF,
     'react/jsx-props-no-spreading': OFF,
     'react/prop-types': OFF,
+
+    'jsx-a11y/click-events-have-key-events': OFF,
+    'jsx-a11y/no-noninteractive-element-interactions': OFF,
+
+    'lines-between-class-members': [ERROR, 'always'],
+    'linebreak-style': [ERROR, 'unix'],
+    quotes: [ERROR, 'single'],
+    semi: [ERROR, 'never'],
+    'no-unused-expressions': WARN,
+    'no-plusplus': OFF,
+    'no-console': OFF,
+    'class-methods-use-this': ERROR,
+    'jsx-quotes': [ERROR, 'prefer-single'],
+    'global-require': OFF,
   },
   settings: {
     'import/resolver': {
       node: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
       },
+      typescript: {},
     },
   },
 }
