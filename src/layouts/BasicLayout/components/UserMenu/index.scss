@@ -1,0 +1,10 @@
+@import 'styles/helpers';
+
+.user-menu {
+  border: 1px solid #f0f0f0;
+
+  &-item {
+    display: flex;
+    align-items: center;
+  }
+}

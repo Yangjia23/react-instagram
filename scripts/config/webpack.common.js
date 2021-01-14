@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PostCssImport = require('postcss-import')
@@ -6,7 +7,11 @@ const CopyPlugin = require('copy-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
-const { ENV, IS_PROD, PROJECT_DIR, SOURCE_DIR, CLIENT_DIR } = require('../constants')
+const { ENV, IS_PROD, PROJECT_DIR, SOURCE_DIR, CLIENT_DIR, BUILD_DOMAIN } = require('../constants')
+const localeMessages = require('../../src/i18n/locale.json')
+const { buildConfig } = require('../../src/config.js')
+
+const config = buildConfig[BUILD_DOMAIN]
 
 module.exports = {
   mode: ENV,
@@ -158,6 +163,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(ENV),
+      'process.env.BUILD_CONFIG': JSON.stringify(config),
+      'process.env.BUILD_LOCALE_MESSAGES': JSON.stringify(localeMessages),
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(PROJECT_DIR, './public/index.ejs'),
       title: 'React Instagram',

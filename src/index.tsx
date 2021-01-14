@@ -1,9 +1,9 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './app'
+import { app } from './app'
 
 if (module && module.hot) {
   module.hot.accept()
 }
+console.log('app', app)
 
-ReactDOM.render(<App name='123' age={20} />, document.querySelector('#root'))
+ReactDOM.render(app, document.querySelector('#root'))

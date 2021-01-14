@@ -3,6 +3,7 @@ const pkg = require('../package.json')
 
 const ENV = process.env.NODE_ENV || 'development'
 const IS_PROD = ENV === 'production'
+const BUILD_DOMAIN = process.env.BUILD_DOMAIN || 'localhost'
 
 const VERSION = `v${pkg.version}`
 const PROJECT_DIR = path.resolve(__dirname, '../')
@@ -21,4 +22,5 @@ module.exports = {
   CLIENT_DIR,
   SERVER_HOST,
   SERVER_PORT,
+  BUILD_DOMAIN,
 }
