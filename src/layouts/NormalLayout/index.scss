@@ -1,0 +1,32 @@
+@import 'styles/helpers';
+
+.normal-layout {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  &-main {
+    flex: 1;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 48px 0 24px;
+    padding: 0 16px;
+    color: $font-color-secondary;
+
+    .footer-container {
+      display: flex;
+      align-items: center;
+
+      .copyright {
+        width: 260px;
+        margin-left: 10px;
+      }
+    }
+  }
+}

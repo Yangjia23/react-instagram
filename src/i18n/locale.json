@@ -7,10 +7,20 @@
     "basicLayout_logout": "Log Out",
     "basicLayout_copyright": "© 2021Instagram from Facebook",
     "globalSearch_placeholder": "Search",
-    "login_appDesc": "React App Boilerplate for Enterprise Admin System",
-    "login_usernameInput_placeholder": "Enter your username",
-    "login_passwordInput_placeholder": "Enter your password",
-    "login_login_btn": "Login"
+
+    "login_emailInput_placeholder": "Email",
+    "login_emailInput_required": "Please input your Email!",
+    "login_emailInput_validate": "The input is not valid E-mail!",
+    "login_usernameInput_placeholder": "Username",
+    "login_usernameInput_required": "Please input your Username!",
+    "login_passwordInput_placeholder": "Password",
+    "login_passwordInput_required": "Please input your Password!",
+    "login_logInSubmit_btn": "Log In",
+    "login_signUpSubmit_btn": "Sign Up",
+    "login_log_in_switch": "Log in",
+    "login_sign_up_switch": "Sign up",
+    "login_no_account": "Don't have an account?",
+    "login_have_account": "Have an account?"
   },
   "zh-cn": {
     "appName": "Instagram",
@@ -20,9 +30,19 @@
     "basicLayout_logout": "退出",
     "basicLayout_copyright": "© 2021Instagram | Facebook 旗下产品",
     "globalSearch_placeholder": "查询",
-    "login_appDesc": "企业级管理系统 React 应用模版",
-    "login_usernameInput_placeholder": "请输入用户名",
-    "login_passwordInput_placeholder": "请输入密码",
-    "login_login_btn": "登陆"
+
+    "login_emailInput_placeholder": "邮箱",
+    "login_emailInput_required": "请输入你的邮箱!",
+    "login_emailInput_validate": "输入值不是一个有效的邮箱地址",
+    "login_usernameInput_placeholder": "用户名",
+    "login_usernameInput_required": "请输入你的用户名!",
+    "login_passwordInput_placeholder": "密码",
+    "login_passwordInput_required": "请输入你的密码!",
+    "login_logInSubmit_btn": "登录",
+    "login_signUpSubmit_btn": "注册",
+    "login_log_in_switch": "请登录",
+    "login_sign_up_switch": "注册",
+    "login_no_account": "没有账号?",
+    "login_have_account": "有账号了?"
   }
 }

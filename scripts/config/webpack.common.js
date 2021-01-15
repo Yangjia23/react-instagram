@@ -168,19 +168,6 @@ module.exports = {
       'process.env.BUILD_CONFIG': JSON.stringify(config),
       'process.env.BUILD_LOCALE_MESSAGES': JSON.stringify(localeMessages),
     }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(PROJECT_DIR, './public/index.ejs'),
-      title: 'React Instagram',
-      filename: 'index.html',
-      cache: false,
-      minify: IS_PROD
-        ? {
-            minifyCSS: true,
-            minifyJS: true,
-            removeComments: true,
-          }
-        : false,
-    }),
     new CopyPlugin({
       patterns: [
         {
@@ -193,6 +180,19 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'assets/css/[id].style.css',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(PROJECT_DIR, './public/index.ejs'),
+      title: 'React Instagram',
+      filename: 'index.html',
+      cache: false,
+      minify: IS_PROD
+        ? {
+            minifyCSS: true,
+            minifyJS: true,
+            removeComments: true,
+          }
+        : false,
     }),
     new WebpackBar(),
   ],

@@ -1,0 +1,51 @@
+@import 'styles/helpers';
+
+.loginView {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 935px;
+  margin: 30px auto 0;
+
+  &-left-panel {
+    flex-basis: 454px;
+    height: 618px;
+    margin-right: -15px;
+    margin-left: -35px;
+  }
+
+  &-photo-wall {
+    height: 100%;
+    background-image: url('../../assets/images/bg-box.png');
+    background-position: 0 0;
+    background-size: 454px 618px;
+  }
+
+  &-right-panel {
+    flex-grow: 1;
+    justify-content: center;
+    max-width: 350px;
+    margin-top: 12px;
+  }
+
+  &-main-section {
+    margin-bottom: 20px;
+    padding: 10px 40px;
+    background: #fff;
+    border: 1px solid #ccc;
+  }
+
+  &-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 22px auto 20px;
+  }
+
+  &-toggle-section {
+    padding: 20px 0;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ccc;
+  }
+}

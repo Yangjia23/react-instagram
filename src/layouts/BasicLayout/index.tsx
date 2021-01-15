@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Dropdown, Popover, Select } from 'antd'
+import { Dropdown, Popover } from 'antd'
 import Icon, {
   HomeOutlined,
   MessageOutlined,
@@ -10,11 +10,10 @@ import Icon, {
   SettingOutlined,
 } from '@ant-design/icons'
 import { injectIntl, IntlContextProps } from '@/hocs/intlContext/index'
+import { LocaleSelect } from '@/components'
 import logo from '@/assets/images/logo.png'
 import { FollowNotice, GlobalSearch, UserMenu } from './components'
 import './index.scss'
-
-const { Option } = Select
 
 interface IProps {
   className: string
@@ -25,6 +24,7 @@ interface IProps {
 
 const BasicLayout: React.FC<IProps> = props => {
   const { appBaseUrl = '/', prefixCls = 'basic-layout', intl, children } = props
+  const [locale] = useState('en-us')
 
   const LogoWrap = () => (
     <Link className='logo-wrap' to={appBaseUrl} href={appBaseUrl}>
@@ -137,16 +137,7 @@ const BasicLayout: React.FC<IProps> = props => {
   const renderFooter = () => (
     <footer className={`${prefixCls}-footer`}>
       <div className='footer-container'>
-        <Select
-          className='language-switch'
-          defaultValue='en-us'
-          style={{ width: 90 }}
-          bordered={false}
-          onChange={locale => intl.updateLocale(locale)}
-        >
-          <Option value='en-us'>English</Option>
-          <Option value='zh-cn'>中文</Option>
-        </Select>
+        <LocaleSelect locale={locale} updateLocale={val => intl.updateLocale(val)} />
         <div className='copyright'>{intl.formatMessage({ id: 'basicLayout_copyright' })}</div>
       </div>
     </footer>

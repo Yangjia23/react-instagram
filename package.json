@@ -30,7 +30,7 @@
       "eslint --config .eslintrc.js src"
     ],
     "*.{css,less,scss}": [
-      "stylelint --config .stylelintrc.js src/**/*.{less,css,scss}"
+      "stylelint --fix --config .stylelintrc.js src/**/*.{less,css,scss}"
     ],
     "*.{ts,tsx,js,json,html,yml,css,less,scss,md}": [
       "prettier --write"
