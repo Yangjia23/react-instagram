@@ -5,8 +5,6 @@ import reduxThunk from 'redux-thunk'
 import reducers from './reducers'
 
 function createAppStore(history: History, preloadedState = {}) {
-  console.log('history', history)
-
   const store = configureStore({
     reducer: {
       router: (connectRouter(history) as any) as Reducer<RouterState>,

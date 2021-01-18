@@ -18,8 +18,6 @@ interface IProps {
 }
 
 const Router: React.FC<IProps> = props => {
-  console.log('Router props', props)
-
   const { history } = props
   const user = useSelector(selectUser)
 

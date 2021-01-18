@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback, memo, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { History } from 'history'
 import { Dropdown, Popover } from 'antd'
 import Icon, {
   HomeOutlined,
@@ -9,9 +11,12 @@ import Icon, {
   UserOutlined,
   SettingOutlined,
 } from '@ant-design/icons'
+
 import { injectIntl, IntlContextProps } from '@/hocs/intlContext/index'
+import LoginValidate from '@/hocs/LoginValidate'
 import { LocaleSelect } from '@/components'
 import logo from '@/assets/images/logo.png'
+import { validate, selectIsLogin } from '@/app/appSlice'
 import { FollowNotice, GlobalSearch, UserMenu } from './components'
 import './index.scss'
 
@@ -20,11 +25,19 @@ interface IProps {
   appBaseUrl?: string
   prefixCls?: string
   intl: IntlContextProps
+  history: History
 }
 
 const BasicLayout: React.FC<IProps> = props => {
-  const { appBaseUrl = '/', prefixCls = 'basic-layout', intl, children } = props
+  const dispatch = useDispatch()
+  const { appBaseUrl = '/', prefixCls = 'basic-layout', intl, history, children } = props
+
   const [locale] = useState('en-us')
+  const isLogin = useSelector(selectIsLogin)
+
+  useEffect(() => {
+    isLogin && dispatch(validate())
+  }, [isLogin, dispatch])
 
   const LogoWrap = () => (
     <Link className='logo-wrap' to={appBaseUrl} href={appBaseUrl}>
@@ -34,7 +47,6 @@ const BasicLayout: React.FC<IProps> = props => {
 
   const NavigationWrap = () => {
     const iconStyle = { color: '#262626', fontSize: '22px' }
-
     const renderMenuNav = () => {
       const menuList = [
         // error  Component definition is missing display name  react/display-name
@@ -134,22 +146,24 @@ const BasicLayout: React.FC<IProps> = props => {
     </header>
   )
 
-  const renderFooter = () => (
+  const RenderFooter = () => (
     <footer className={`${prefixCls}-footer`}>
       <div className='footer-container'>
-        <LocaleSelect locale={locale} updateLocale={val => intl.updateLocale(val)} />
+        <LocaleSelect locale={locale} updateLocale={useCallback(val => intl.updateLocale(val), [])} />
         <div className='copyright'>{intl.formatMessage({ id: 'basicLayout_copyright' })}</div>
       </div>
     </footer>
   )
 
   return (
-    <div className={`${prefixCls}`}>
-      {renderHeader()}
-      <main className={`${prefixCls}-main`}>{children}</main>
-      {renderFooter()}
-    </div>
+    <LoginValidate isLogin={isLogin} history={history}>
+      <div className={`${prefixCls}`}>
+        {renderHeader()}
+        <main className={`${prefixCls}-main`}>{children}</main>
+        <RenderFooter />
+      </div>
+    </LoginValidate>
   )
 }
 
-export default injectIntl(BasicLayout)
+export default injectIntl(memo(BasicLayout))

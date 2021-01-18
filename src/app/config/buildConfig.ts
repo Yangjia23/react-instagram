@@ -1,5 +1,6 @@
 interface IBuild {
   locale: string
+  apiDomain: string
 }
 
 interface IMessageMap {

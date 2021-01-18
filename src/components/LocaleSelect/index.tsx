@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Select } from 'antd'
 
 const { Option } = Select
@@ -24,4 +24,4 @@ const LocaleSelect: React.FC<IProps> = props => {
   )
 }
 
-export default LocaleSelect
+export default memo(LocaleSelect)

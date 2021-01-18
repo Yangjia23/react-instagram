@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
 import { injectIntl, IntlContextProps } from '@/hocs/intlContext'
 import { Form, Input, Button } from 'antd'
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons'
+import { login } from '@/app/appSlice'
 import './index.scss'
 
 interface ISignUpProps {
   prefixCls?: string
   intl: IntlContextProps
 }
-const onFinish = () => {}
+interface ISignUpData {
+  username: string
+  email: string
+  password: string
+}
+
 const SignUp: React.FC<ISignUpProps> = props => {
   const { intl, prefixCls = 'signUpForm' } = props
+  const dispatch = useDispatch()
+
+  const onFinish = (formData: ISignUpData) => {
+    dispatch(login(formData))
+  }
 
   return (
     <Form name='normal_login' className={`${prefixCls}`} initialValues={{ remember: true }} onFinish={onFinish}>
@@ -56,4 +68,4 @@ const SignUp: React.FC<ISignUpProps> = props => {
   )
 }
 
-export default injectIntl(SignUp)
+export default injectIntl(memo(SignUp))
